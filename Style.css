@@ -1,0 +1,273 @@
+/* Reset */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: black;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000; 
+  padding: 10px 20px;
+  color: #d4af37; 
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+.navbar-nav {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+}
+
+.navbar-nav .nav-item a {
+  text-decoration: none;
+  color: #fff; 
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-item a:hover {
+  color: #d4af37; /* Dourado */
+}
+
+/* Menu Hamburguer */
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.navbar-toggle span {
+  background-color: #fff; /* Branco */
+  height: 3px;
+  width: 25px;
+}
+
+.navbar-nav.collapsed {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  background-color: black;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.navbar-nav.collapsed .nav-item a {
+  color: #fff; /* Branco */
+  padding: 10px;
+}
+
+.navbar-nav.collapsed .nav-item a:hover {
+  color: #d4af37; /* Dourado */
+}
+
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    display: none;
+  }
+
+  .navbar-toggle {
+    display: flex;
+  }
+
+  .navbar-nav.collapsed {
+    display: flex;
+  }
+}
+
+.header {
+  text-align: center;
+  padding: 150px 20px;
+  background: url('Img/fundo.jpg') no-repeat center center/cover;
+  color: #fff; 
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 1.2rem;
+}
+
+
+.section {
+  padding: 50px 20px;
+}
+
+.section.light {
+  background-color: black;
+  color: white;
+}
+
+.serviços {
+  text-align: center;
+  padding: 20px;
+  background-color: #000; 
+}
+
+.serviços h1 {
+  font-size: 24px;
+  color: #fff; 
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #000; 
+  border: 2px solid #d4af37; 
+  border-radius: 8px;
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  font-size: 20px;
+  color: #d4af37; 
+  margin-bottom: 10px;
+}
+
+.card .preco {
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff; 
+  margin: 15px 0;
+}
+
+.card .preco span {
+  font-size: 16px;
+  vertical-align: top;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+  text-align: left;
+}
+
+.card ul li {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #ccc; 
+}
+
+.card button {
+  background-color: #d4af37; 
+  color: #000; 
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.card button:hover {
+  background-color: #b8952e; 
+}
+/* Formulário */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #000; 
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid #d4af37; 
+}
+
+label {
+  font-size: 1rem;
+  color: white ; 
+  margin-bottom: 5px;
+}
+
+input, select, button {
+  padding: 10px;
+  border: 1px solid #d4af37; 
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #000; 
+  color: #fff; 
+}
+
+input:focus, select:focus {
+  border-color: #f0a500; 
+  outline: none;
+}
+
+button {
+  background-color: #d4af37; 
+  color: #000; 
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #b8952e; 
+}
+
+
+.footer {
+  background-color:black ;
+  color:#d4af37; 
+  text-align: center;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    display: none;
+  }
+
+  .navbar-toggle {
+    display: flex;
+  }
+
+  .navbar-nav.collapsed {
+    display: flex;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .header p {
+    font-size: 1rem;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
