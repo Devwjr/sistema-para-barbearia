@@ -59,28 +59,81 @@ try {
     $message = "Erro ao buscar agendamentos: " . $e->getMessage();
     $agendamentos = [];
 }
-?>
+?> 
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciar Agendamentos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .titulo-principal {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .table {
+            margin-bottom: 20px;
+        }
+        .table th, .table td {
+            color: white;
+        }
+        .table thead th {
+            background-color: black;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: black;
+        }
+        .table-striped tbody tr:nth-of-type(even) {
+            background-color: black;
+        }
+        .btn-custom {
+            background-color: #FFD700;
+            color: #000;
+            border: none;
+            border-radius: 16px;
+            transition: background-color 0.3s;
+        }
+        .btn-custom:hover {
+            background-color: #FFC107;
+        }
+        .mensagem-info {
+            background-color: #333;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .nenhum-agendamento {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Gerenciar Agendamentos</h1>
+    <div class="container">
+        <h1 class="titulo-principal">Gerenciar Agendamentos</h1>
 
         <?php if ($message): ?>
-        <div class="alert alert-info message">
+        <div class="mensagem-info">
             <?= htmlspecialchars($message) ?>
         </div>
         <?php endif; ?>
 
         <?php if (!empty($agendamentos)): ?>
-        <table class="table table-bordered table-striped">
-            <thead class="table-white">
+        <table class="table table-striped">
+            <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
@@ -101,20 +154,22 @@ try {
                     <td><?= htmlspecialchars($agendamento['data_agendamento']) ?></td>
                     <td><?= htmlspecialchars($agendamento['horario']) ?></td>
                     <td>
-                        <a href="editar_agendamento.php?id=<?= htmlspecialchars($agendamento['id']) ?>" class="btn btn-primary btn-sm">Editar</a>
-                        <a href="?delete=<?= htmlspecialchars($agendamento['id']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja deletar?');">Deletar</a>
+                        <a href="editar_agendamento.php?id=<?= htmlspecialchars($agendamento['id']) ?>" class="btn btn-custom">Editar</a>
+                        <a href="?delete=<?= htmlspecialchars($agendamento['id']) ?>" class="btn btn-custom" onclick="return confirm('Tem certeza que deseja deletar?');">Deletar</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
         <?php else: ?>
-        <p class="text-center">
+        <p class="nenhum-agendamento">
             Nenhum agendamento encontrado.
         </p>
         <?php endif; ?>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
