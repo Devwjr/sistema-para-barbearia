@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php
 include 'conexao.php';
 
@@ -97,6 +98,8 @@ if (!$agendamento) {
 </body>
 </html>
 =======
+=======
+>>>>>>> d98973dce87bc35822f5965752eac37422add82d
 <?php
 include 'conexao.php';
 
@@ -194,4 +197,7 @@ if (!$agendamento) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
+<<<<<<< HEAD
 >>>>>>> d98973d (Atualizando com nova versão do sistema da barbearia)
+=======
+>>>>>>> d98973dce87bc35822f5965752eac37422add82d

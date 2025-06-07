@@ -7,6 +7,7 @@ if (!isset($_SESSION['admin'])) {
 
 require_once '../includes/conexao.php';
 
+<<<<<<< HEAD
 // Excluir
 if (isset($_GET['excluir'])) {
     $id = intval($_GET['excluir']);
@@ -47,10 +48,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
+=======
+>>>>>>> d98973dce87bc35822f5965752eac37422add82d
 $agendamentos = $db->query("SELECT * FROM agendamentos ORDER BY data_agendamento, horario")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -138,5 +142,34 @@ $agendamentos = $db->query("SELECT * FROM agendamentos ORDER BY data_agendamento
         </div>
     </div>
 
+=======
+<html>
+<head>
+    <title>Painel do Administrador</title>
+</head>
+<body>
+    <h2>Agendamentos</h2>
+    <p><a href="logout.php">Sair</a></p>
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Data</th>
+            <th>Horário</th>
+            <th>Serviço</th>
+            <th>Criado em</th>
+        </tr>
+        <?php foreach ($agendamentos as $a): ?>
+            <tr>
+                <td><?= htmlspecialchars($a['nome']) ?></td>
+                <td><?= htmlspecialchars($a['telefone']) ?></td>
+                <td><?= htmlspecialchars($a['data_agendamento']) ?></td>
+                <td><?= htmlspecialchars($a['horario']) ?></td>
+                <td><?= htmlspecialchars($a['servico']) ?></td>
+                <td><?= htmlspecialchars($a['criado_em']) ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+>>>>>>> d98973dce87bc35822f5965752eac37422add82d
 </body>
 </html>

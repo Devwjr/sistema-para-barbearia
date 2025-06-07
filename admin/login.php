@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 <head>
     <title>Login Admin</title>
+<<<<<<< HEAD
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-black text-yellow-400 flex items-center justify-center min-h-screen">
@@ -50,5 +51,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
     </div>
 
+=======
+</head>
+<body>
+    <h2>Login do Administrador</h2>
+    <?php if ($erro): ?>
+        <p style="color:red;"><?= $erro ?></p>
+    <?php endif; ?>
+    <form method="post">
+        <label>Usuário:</label><br>
+        <input type="text" name="usuario"><br><br>
+
+        <label>Senha:</label><br>
+        <input type="password" name="senha"><br><br>
+
+        <button type="submit">Entrar</button>
+    </form>
+>>>>>>> d98973dce87bc35822f5965752eac37422add82d
 </body>
 </html>
