@@ -93,7 +93,7 @@ body {
 .header {
   text-align: center;
   padding: 150px 20px;
-  background: url('Img/fundo.jpg') no-repeat center center/cover;
+  background: url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YmFyYmVhcmlhfGVufDB8fDB8fHww') no-repeat center center/cover;
   color: #fff; 
   height: 100vh;
   display: flex;
