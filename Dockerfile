@@ -1,6 +1,6 @@
 FROM php:8.2-apache
 
-# Instalar dependências do sistema e extensões PHP
+# Instalar extensões do PHP
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
@@ -11,10 +11,24 @@ RUN apt-get update && apt-get install -y \
 
 RUN a2enmod rewrite
 
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+RUN echo "<Directory /var/www/html>" >> /etc/apache2/apache2.conf
+RUN echo "    Options Indexes FollowSymLinks" >> /etc/apache2/apache2.conf
+RUN echo "    AllowOverride All" >> /etc/apache2/apache2.conf
+RUN echo "    Require all granted" >> /etc/apache2/apache2.conf
+RUN echo "</Directory>" >> /etc/apache2/apache2.conf
 
 COPY . /var/www/html/
 
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html \
+    && find /var/www/html -type d -exec chmod 755 {} \; \
+    && find /var/www/html -type f -exec chmod 644 {} \;
+
+RUN mkdir -p /var/www/html/uploads && \
+    mkdir -p /var/www/html/tmp && \
+    chmod -R 777 /var/www/html/uploads && \
+    chmod -R 777 /var/www/html/tmp
 
 EXPOSE 80
 CMD ["apache2-foreground"]
