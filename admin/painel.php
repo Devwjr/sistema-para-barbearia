@@ -7,7 +7,6 @@ if (!isset($_SESSION['admin'])) {
 
 require_once '../includes/conexao.php';
 
-<<<<<<< HEAD
 // Excluir
 if (isset($_GET['excluir'])) {
     $id = intval($_GET['excluir']);
@@ -47,14 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: painel.php");
     exit;
 }
-
-=======
->>>>>>> d98973dce87bc35822f5965752eac37422add82d
 $agendamentos = $db->query("SELECT * FROM agendamentos ORDER BY data_agendamento, horario")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -132,44 +127,45 @@ $agendamentos = $db->query("SELECT * FROM agendamentos ORDER BY data_agendamento
                             <td class="p-2"><?= htmlspecialchars($a['servico']) ?></td>
                             <td class="p-2"><?= htmlspecialchars($a['criado_em']) ?></td>
                             <td class="p-2 space-x-2">
-                                <a href="?editar=<?= $a['id'] ?>" class="bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-300 text-xs">Editar</a>
-                                <a href="?excluir=<?= $a['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')" class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-400 text-xs">Excluir</a>
+                                <a href="?editar=<?= $a['id'] ?>" class="bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-300 text-xs" onclick="return mostrarModalAcao('editar', <?= $a['id'] ?>)">Editar</a>
+                                <a href="?excluir=<?= $a['id'] ?>" class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-400 text-xs" onclick="return mostrarModalAcao('excluir', <?= $a['id'] ?>)">Excluir</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
-    </div>
+        </div>
 
-=======
-<html>
-<head>
-    <title>Painel do Administrador</title>
-</head>
-<body>
-    <h2>Agendamentos</h2>
-    <p><a href="logout.php">Sair</a></p>
-    <table border="1" cellpadding="8">
-        <tr>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Data</th>
-            <th>Horário</th>
-            <th>Serviço</th>
-            <th>Criado em</th>
-        </tr>
-        <?php foreach ($agendamentos as $a): ?>
-            <tr>
-                <td><?= htmlspecialchars($a['nome']) ?></td>
-                <td><?= htmlspecialchars($a['telefone']) ?></td>
-                <td><?= htmlspecialchars($a['data_agendamento']) ?></td>
-                <td><?= htmlspecialchars($a['horario']) ?></td>
-                <td><?= htmlspecialchars($a['servico']) ?></td>
-                <td><?= htmlspecialchars($a['criado_em']) ?></td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
->>>>>>> d98973dce87bc35822f5965752eac37422add82d
-</body>
-</html>
+        <div id="modalAcao" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);z-index:999;justify-content:center;align-items:center;">
+            <div style="background:#fff;color:#222;padding:40px 30px;border-radius:10px;text-align:center;max-width:300px;margin:auto;">
+                <h2 id="modalTitulo" style="color:#d4af37;">Confirmação</h2>
+                <p id="modalTexto">Deseja realmente realizar esta ação?</p>
+                <div style="margin-top:20px;">
+                    <button id="btnConfirmar" style="background:#d4af37;color:#000;padding:10px 20px;border:none;border-radius:5px;cursor:pointer;">Confirmar</button>
+                    <button onclick="fecharModalAcao()" style="background:#ccc;color:#222;padding:10px 20px;border:none;border-radius:5px;cursor:pointer;margin-left:10px;">Cancelar</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            let acaoTipo = '';
+            let acaoId = '';
+            function mostrarModalAcao(tipo, id) {
+                acaoTipo = tipo;
+                acaoId = id;
+                document.getElementById('modalAcao').style.display = 'flex';
+                document.getElementById('modalTitulo').innerText = tipo === 'editar' ? 'Editar Agendamento' : 'Excluir Agendamento';
+                document.getElementById('modalTexto').innerText = tipo === 'editar' ? 'Deseja realmente editar este agendamento?' : 'Tem certeza que deseja excluir este agendamento?';
+                document.getElementById('btnConfirmar').onclick = function() {
+                    if (acaoTipo === 'editar') {
+                        window.location.href = '?editar=' + acaoId;
+                    } else {
+                        window.location.href = '?excluir=' + acaoId;
+                    }
+                };
+                return false;
+            }
+            function fecharModalAcao() {
+                document.getElementById('modalAcao').style.display = 'none';
+            }
+        </script>
