@@ -14,6 +14,7 @@
   </script>
 </head>
 <body>
+
   <nav class="navbar">
     <div class="container">
       <ul class="navbar-nav">
@@ -22,6 +23,9 @@
         <li class="nav-item"><a href="#formulario">Agendamento</a></li>
         <li class="nav-item"><a href="#endereco">Endereço</a></li>
       </ul>
+      <button class="toggle-mode" id="toggleTheme" title="Alternar tema" onclick="toggleMode()">
+        <span id="iconLamp">💡</span>
+      </button>
       <div class="navbar-toggle" onclick="toggleMenu()">
         <span></span>
         <span></span>
@@ -29,16 +33,34 @@
       </div>
     </div>
   </nav>
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+      document.getElementById('iconLamp').textContent = document.body.classList.contains('light-mode') ? '🔆' : '💡';
+    }
+    window.onload = function() {
+      if(localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+        document.getElementById('iconLamp').textContent = '🔆';
+      }
+    }
+  </script>
+
 
   <header class="header" id="header">
-    <h1>Barbearia Estilo</h1>
-    <p>Seu estilo começa aqui. Agende seu horário e garanta o melhor atendimento!</p>
+    <div style="background:rgba(0,0,0,0.55);border-radius:18px;display:inline-block;padding:32px 48px;margin-top:60px;box-shadow:0 4px 24px rgba(0,0,0,0.18);">
+      <h1 style="font-size:2.8rem;color:#d4af37;margin-bottom:10px;letter-spacing:2px;font-weight:800;text-shadow:0 2px 8px #000;">Barbearia Estilo</h1>
+      <p style="font-size:1.3rem;color:#fff;max-width:500px;margin:0 auto;">Seu estilo começa aqui. Agende seu horário e garanta o melhor atendimento!</p>
+    </div>
   </header>
+
 
   <section class="serviços section" id="servicos">
     <h1>Nossos Serviços</h1>
-    <div class="cards">
-      <div class="card">
+    <div class="cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;justify-items:center;align-items:stretch;">
+      <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:space-between;">
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&q=80" alt="Corte Masculino" style="width:100%;max-width:220px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.12);margin-bottom:18px;">
         <h2>Corte Masculino</h2>
         <div class="preco">R$ 35 <span>/ sessão</span></div>
         <ul>
@@ -47,7 +69,8 @@
         </ul>
         <button onclick="document.getElementById('formulario').scrollIntoView()">Agendar</button>
       </div>
-      <div class="card">
+      <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:space-between;">
+        <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=400&q=80" alt="Barba" style="width:100%;max-width:220px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.12);margin-bottom:18px;">
         <h2>Barba</h2>
         <div class="preco">R$ 25 <span>/ sessão</span></div>
         <ul>
@@ -56,7 +79,8 @@
         </ul>
         <button onclick="document.getElementById('formulario').scrollIntoView()">Agendar</button>
       </div>
-      <div class="card">
+      <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:space-between;">
+        <img src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?w=400&q=80" alt="Combo Corte + Barba" style="width:100%;max-width:220px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.12);margin-bottom:18px;">
         <h2>Combo Corte + Barba</h2>
         <div class="preco">R$ 55 <span>/ sessão</span></div>
         <ul>
