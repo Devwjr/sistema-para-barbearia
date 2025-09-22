@@ -8,6 +8,10 @@
   --accent-hover: #b8952e;
   --bg-navbar: #23232a;
   --bg-section: #18181b;
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  --card-bg: #2a2a2a;
+  --card-text: #ffffff;
 }
 
 .light-mode {
@@ -19,6 +23,10 @@
   --accent-hover: #b8952e;
   --bg-navbar: #fff;
   --bg-section: #f4f4f5;
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --card-bg: #ffffff;
+  --card-text: #1a1a1a;
 }
 
 body {
@@ -119,7 +127,7 @@ body {
 .header {
   text-align: center;
   padding: 120px 20px 60px 20px;
-  background: url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1200&auto=format&fit=crop&q=60') no-repeat center center/cover;
+  background: url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmFyYmVhcmlhfGVufDB8fDB8fHww') no-repeat center center/cover;
   color: var(--text-main);
   min-height: 60vh;
   display: flex;
@@ -187,6 +195,8 @@ body {
   text-align: center;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   transition: box-shadow 0.3s, background 0.3s;
+  background-color: var(--card-bg);
+  color: var(--card-text);
 }
 
 .card:hover {
@@ -350,4 +360,8 @@ button:hover {
 
 .toggle-mode:hover {
   background: var(--accent-hover);
+}
+
+.card-title, .card-text, .list-unstyled {
+  color: var(--card-text);
 }

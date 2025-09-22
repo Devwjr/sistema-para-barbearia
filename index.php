@@ -1,10 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barbearia Estilo</title>
+  <title>Barbearia do John</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="Style.css">
   <script>
     function toggleMenu() {
@@ -14,22 +15,22 @@
   </script>
 </head>
 <body>
-
-  <nav class="navbar">
-    <div class="container">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a href="#header">Início</a></li>
-        <li class="nav-item"><a href="#servicos">Serviços</a></li>
-        <li class="nav-item"><a href="#formulario">Agendamento</a></li>
-        <li class="nav-item"><a href="#endereco">Endereço</a></li>
-      </ul>
-      <button class="toggle-mode" id="toggleTheme" title="Alternar tema" onclick="toggleMode()">
-        <span id="iconLamp">💡</span>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#header">Barbearia do john</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="navbar-toggle" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#header">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" href="#formulario">Agendamento</a></li>
+          <li class="nav-item"><a class="nav-link" href="#endereco">Endereço</a></li>
+        </ul>
+        <button class="btn btn-warning" id="toggleTheme" title="Alternar tema" onclick="toggleMode()">
+          <span id="iconLamp">☀️</span>
+        </button>
       </div>
     </div>
   </nav>
@@ -37,12 +38,12 @@
     function toggleMode() {
       document.body.classList.toggle('light-mode');
       localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
-      document.getElementById('iconLamp').textContent = document.body.classList.contains('light-mode') ? '🔆' : '💡';
+  document.getElementById('iconLamp').textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
     }
     window.onload = function() {
       if(localStorage.getItem('theme') === 'light') {
         document.body.classList.add('light-mode');
-        document.getElementById('iconLamp').textContent = '🔆';
+        document.getElementById('iconLamp').textContent = '☀️';
       }
     }
   </script>
@@ -57,100 +58,143 @@
 
 
   <section class="serviços section" id="servicos">
-    <h1>Nossos Serviços</h1>
-    <div class="cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;justify-items:center;align-items:stretch;">
-      <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:space-between;">
-        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&q=80" alt="Corte Masculino" style="width:100%;max-width:220px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.12);margin-bottom:18px;">
-        <h2>Corte Masculino</h2>
-        <div class="preco">R$ 35 <span>/ sessão</span></div>
-        <ul>
-          <li>Estilo clássico ou moderno</li>
-          <li>Finalização com produtos premium</li>
-        </ul>
-        <button onclick="document.getElementById('formulario').scrollIntoView()">Agendar</button>
+    <h1 class="text-center my-4">Nossos Serviços</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+          <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29ydGUlMjBkZSUyMGNhYmVsb3xlbnwwfHwwfHx8MA%3D%3D class="card-img-top" alt="Corte Masculino">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Corte Masculino</h5>
+            <p class="card-text"><strong>R$ 35</strong> <span>/ sessão</span></p>
+            <ul class="list-unstyled mb-3">
+              <li>Estilo clássico ou moderno</li>
+              <li>Finalização com produtos premium</li>
+            </ul>
+            <button class="btn btn-warning mt-auto">Agendar</button>
+          </div>
+        </div>
       </div>
-      <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:space-between;">
-        <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=400&q=80" alt="Barba" style="width:100%;max-width:220px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.12);margin-bottom:18px;">
-        <h2>Barba</h2>
-        <div class="preco">R$ 25 <span>/ sessão</span></div>
-        <ul>
-          <li>Desenho e aparo</li>
-          <li>Toalha quente</li>
-        </ul>
-        <button onclick="document.getElementById('formulario').scrollIntoView()">Agendar</button>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+          <img src="https://images.unsplash.com/photo-1733995471058-3d6ff2013de3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y29ydGUlMjBkZSUyMGJhcmJhJTIwYmFyYmVhcmlhfGVufDB8fDB8fHww" class="card-img-top" alt="Barba">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Barba</h5>
+            <p class="card-text"><strong>R$ 25</strong> <span>/ sessão</span></p>
+            <ul class="list-unstyled mb-3">
+              <li>Desenho e aparo</li>
+              <li>Toalha quente</li>
+            </ul>
+            <button class="btn btn-warning mt-auto">Agendar</button>
+          </div>
+        </div>
       </div>
-      <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:space-between;">
-        <img src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?w=400&q=80" alt="Combo Corte + Barba" style="width:100%;max-width:220px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.12);margin-bottom:18px;">
-        <h2>Combo Corte + Barba</h2>
-        <div class="preco">R$ 55 <span>/ sessão</span></div>
-        <ul>
-          <li>Pacote completo</li>
-          <li>Desconto especial</li>
-        </ul>
-        <button onclick="document.getElementById('formulario').scrollIntoView()">Agendar</button>
+
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+          <img src="https://images.unsplash.com/photo-1705976063599-39e79ab87bb1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29ydGUlMjBiYXJiZWFyaWF8ZW58MHx8MHx8fDA%3D" class="card-img-top" alt="Combo">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Combo Corte + Barba</h5>
+            <p class="card-text"><strong>R$ 55</strong> <span>/ sessão</span></p>
+            <ul class="list-unstyled mb-3">
+              <li>Pacote completo</li>
+              <li>Desconto especial</li>
+            </ul>
+            <button class="btn btn-warning mt-auto">Agendar</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
 
   <section class="section light" id="formulario">
-    <h1>Agende seu horário</h1>
-    <form id="formAgendamento" action="processar_agendamento.php" method="POST" onsubmit="return mostrarModal();">
-      <label for="nome">Nome:</label>
-      <input type="text" id="nome" name="nome" required>
+    <h1 class="text-center my-4">Agende seu horário</h1>
+    <form id="formAgendamento" action="processar_agendamento.php" method="POST" class="row g-3 mx-auto" style="max-width:500px;" onsubmit="return mostrarModal();">
+      <div class="col-12">
+        <label for="nome" class="form-label">Nome:</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
 
-      <label for="telefone">Telefone:</label>
-      <input type="text" id="telefone" name="telefone" required>
-
-      <label for="servico">Serviço:</label>
-      <select id="servico" name="servico" required>
-        <option value="Corte Masculino">Corte Masculino</option>
-        <option value="Barba">Barba</option>
-        <option value="Combo Corte + Barba">Combo Corte + Barba</option>
-      </select>
-
-      <label for="data">Data:</label>
-      <input type="date" id="data" name="data" required>
-
-      <label for="horario">Horário:</label>
-      <input type="time" id="horario" name="horario" required>
-
-      <button type="submit">Agendar</button>
+      </div>
+      <div class="col-12">
+        <label for="telefone" class="form-label">Telefone:</label>
+        <input type="text" class="form-control" id="telefone" name="telefone" required>
+      </div>
+      <div class="col-12">
+        <label for="servico" class="form-label">Serviço:</label>
+        <select class="form-select" id="servico" name="servico" required>
+          <option value="Corte Masculino">Corte Masculino</option>
+          <option value="Barba">Barba</option>
+          <option value="Combo Corte + Barba">Combo Corte + Barba</option>
+        </select>
+      </div>
+        <label for="data" class="form-label">Data:</label>
+        <input type="date" class="form-control" id="data" name="data" required>
+      </div>
+      <div class="col-6">
+        <label for="horario" class="form-label">Horário:</label>
+        <input type="time" class="form-control" id="horario" name="horario" required>
+      </div>
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-warning w-100">Agendar</button>
+      </div>
     </form>
-    <div id="modalSucesso" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);z-index:999;justify-content:center;align-items:center;">
-      <div style="background:#fff;color:#222;padding:40px 30px;border-radius:10px;text-align:center;max-width:300px;margin:auto;">
-        <h2 style="color:#d4af37;">Agendamento marcado com sucesso!</h2>
-        <button onclick="fecharModal()" style="margin-top:20px;background:#d4af37;color:#000;padding:10px 20px;border:none;border-radius:5px;cursor:pointer;">Fechar</button>
+    <div id="modalSucesso" class="modal fade" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+            class="card-img-top" alt="Combo Corte + Barba">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel" style="color:#d4af37;">Agendamento marcado com sucesso!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Fechar</button>
+          </div>
+        </div>
       </div>
     </div>
     <script>
       function mostrarModal() {
-        document.getElementById('modalSucesso').style.display = 'flex';
+        var modal = new bootstrap.Modal(document.getElementById('modalSucesso'));
+        modal.show();
         setTimeout(function(){
           document.getElementById('formAgendamento').submit();
         }, 1200);
         return false;
       }
       function fecharModal() {
-        document.getElementById('modalSucesso').style.display = 'none';
+        var modal = bootstrap.Modal.getInstance(document.getElementById('modalSucesso'));
+        modal.hide();
       }
     </script>
   </section>
 
 
   <section class="section light" id="endereco">
-    <h1>Onde estamos</h1>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;max-width:800px;margin:auto;">
-      <div>
-        <p style="font-size:1.2rem;">Rua do Estilo, 123<br>Centro, Cidade<br>Telefone: (99) 99999-9999</p>
-        <a href="https://www.google.com/maps" target="_blank" style="color:#d4af37;text-decoration:underline;">Ver no Google Maps</a>
+    <h1 class="text-center my-4">Onde estamos</h1>
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-6 mb-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h5 class="card-title">Endereço</h5>
+              <p class="card-text mb-2">Rua do Estilo, 123<br>Centro, Cidade<br>Telefone: (99) 99999-9999</p>
+              <a href="https://www.google.com/maps/place/Rua+do+Estilo,+123" target="_blank" class="btn btn-warning">Ver no Google Maps</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="ratio ratio-16x9">
+            <iframe src="https://www.google.com/maps?q=Rua+do+Estilo,+123&output=embed" allowfullscreen loading="lazy" style="border-radius:8px;"></iframe>
+          </div>
+        </div>
       </div>
-      <img src="Img/fundo.jpg" alt="Barbearia" style="max-width:400px; width:100%; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.3);">
     </div>
   </section>
 
   <footer class="footer">
     &copy; 2025 Barbearia Estilo. Todos os direitos reservados.
   </footer>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
